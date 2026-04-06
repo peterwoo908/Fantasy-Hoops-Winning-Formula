@@ -91,7 +91,8 @@ def run_daily_inference(
     inference["Pred_FP"] = model_fp.predict(inference[features_s2])
 
     if "Injury_Status" in inference.columns:
-        mask_out = inference["Injury_Status"].isin(["OUT", "IR"])
+        injury_status = inference["Injury_Status"].fillna("").astype(str).str.upper()
+        mask_out = injury_status.str.contains("OUT|IR", regex=True)
         inference.loc[mask_out, ["Pred_FP", "Pred_MIN"]] = 0.0
 
     inference["Team"] = inference["TEAM_ID"].map(id_map)

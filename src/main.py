@@ -1,11 +1,20 @@
 import argparse
 
+
 from src.pipelines.build_model_dataset import build_model_dataset
 from src.pipelines.run_daily_pipeline import run_daily_pipeline
 from src.pipelines.train_models import train_models
 
 
+from dotenv import load_dotenv
+from pathlib import Path
+
+
 def main():
+
+    project_root = Path(__file__).resolve().parents[1]
+    load_dotenv(project_root / ".env")
+
     parser = argparse.ArgumentParser(description="Fantasy NBA ML pipeline")
     subparsers = parser.add_subparsers(dest="command", required=True)
 
