@@ -1,0 +1,9 @@
+pandas
+numpy
+pyarrow
+nba_api
+espn-api
+xgboost
+scikit-learn
+joblib
+python-dotenv
