@@ -1,0 +1,80 @@
+name: Scheduled Pipeline
+
+on:
+  schedule:
+    - cron: "0 11 * * *"   # daily at 11:00 UTC
+    - cron: "0 12 * * 1"   # weekly Monday at 12:00 UTC
+  workflow_dispatch:
+
+jobs:
+  daily-inference:
+    if: github.event.schedule == '0 11 * * *' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+
+    env:
+      ESPN_LEAGUE_ID: ${{ secrets.ESPN_LEAGUE_ID }}
+      ESPN_YEAR: ${{ secrets.ESPN_YEAR }}
+      ESPN_SWID: ${{ secrets.ESPN_SWID }}
+      ESPN_S2: ${{ secrets.ESPN_S2 }}
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Build dataset
+        run: python -m src.main build-dataset
+
+      - name: Run inference for today
+        run: python -m src.main run-inference --date $(date +%F)
+
+      - name: Upload projections artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: daily-projections
+          path: outputs/projections/*.csv
+
+  weekly-retrain:
+    if: github.event.schedule == '0 12 * * 1' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+
+    env:
+      ESPN_LEAGUE_ID: ${{ secrets.ESPN_LEAGUE_ID }}
+      ESPN_YEAR: ${{ secrets.ESPN_YEAR }}
+      ESPN_SWID: ${{ secrets.ESPN_SWID }}
+      ESPN_S2: ${{ secrets.ESPN_S2 }}
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Build dataset
+        run: python -m src.main build-dataset
+
+      - name: Train models
+        run: python -m src.main train-models
+
+      - name: Upload model artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: trained-models
+          path: models/*.pkl

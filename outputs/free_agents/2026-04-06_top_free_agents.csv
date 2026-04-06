@@ -1,0 +1,13 @@
+Date,PLAYER_NAME,Team,Opp,Fantasy_Team,Free_Agent,Injury_Status,Pred_MIN,Pred_FP,L3_FP_per_Min,Opp_DefRtg,Schedule_Rest,Long_Absence_Flag
+2026-04-06,Joel Embiid,PHI,SAS,Free Agent,True,ACTIVE,32.83,46.23,1.23,112.87,3,0
+2026-04-06,Jalen Brunson,NYK,ATL,Free Agent,True,ACTIVE,35.79,44.47,0.99,112.55,3,0
+2026-04-06,Paul George,PHI,SAS,Free Agent,True,ACTIVE,32.93,41.08,1.55,112.87,2,0
+2026-04-06,Rayan Rupert,MEM,CLE,Free Agent,True,ACTIVE,32.0,36.93,0.48,110.78,1,0
+2026-04-06,Mikal Bridges,NYK,ATL,Free Agent,True,ACTIVE,33.37,32.26,0.82,112.55,3,0
+2026-04-06,Christian Braun,DEN,POR,Free Agent,True,ACTIVE,31.07,29.58,0.88,113.2,2,0
+2026-04-06,Josh Hart,NYK,ATL,Free Agent,True,ACTIVE,30.69,28.8,0.88,112.55,3,0
+2026-04-06,Javon Small,MEM,CLE,Free Agent,True,DAY_TO_DAY,24.13,27.96,1.25,110.78,3,0
+2026-04-06,GG Jackson,MEM,CLE,Free Agent,True,DAY_TO_DAY,24.26,26.83,1.31,110.78,3,0
+2026-04-06,Cam Spencer,MEM,CLE,Free Agent,True,DAY_TO_DAY,23.29,26.79,1.4,110.78,4,0
+2026-04-06,Dylan Harper,SAS,PHI,Free Agent,True,ACTIVE,23.7,26.39,1.37,112.06,2,0
+2026-04-06,Mitchell Robinson,NYK,ATL,Free Agent,True,ACTIVE,20.01,25.61,0.86,112.55,3,0
