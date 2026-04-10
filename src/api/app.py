@@ -1,3 +1,4 @@
+from datetime import date
 from pathlib import Path
 from typing import Optional
 
@@ -6,7 +7,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
 from src.config import PROJECTIONS_DIR, FREE_AGENTS_DIR
-
+from src.pipelines.refresh import refresh_for_date
 
 app = FastAPI(title="Fantasy Hoops API")
 
@@ -37,6 +38,18 @@ def health() -> dict:
     return {"status": "ok"}
 
 
+@app.post("/api/refresh")
+def refresh_data(date_str: str | None = None) -> dict:
+    try:
+        result = refresh_for_date(date_str=date_str)
+        return {
+            "status": "ok",
+            **result,
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @app.get("/api/projections/latest")
 def get_latest_projections() -> dict:
     try:
@@ -48,6 +61,16 @@ def get_latest_projections() -> dict:
     except FileNotFoundError as e:
         raise HTTPException(status_code=404, detail=str(e))
 
+@app.get("/api/projections/today")
+def get_today_projections() -> dict:
+    today_str = date.today().isoformat()
+    path = PROJECTIONS_DIR / f"{today_str}_projections.csv"
+    if not path.exists():
+        raise HTTPException(status_code=404, detail=f"No projections file found for {today_str}")
+    return {
+        "file": path.name,
+        "rows": _load_csv(path),
+    }
 
 @app.get("/api/free-agents/latest")
 def get_latest_free_agents() -> dict:
@@ -59,6 +82,17 @@ def get_latest_free_agents() -> dict:
         }
     except FileNotFoundError as e:
         raise HTTPException(status_code=404, detail=str(e))
+    
+@app.get("/api/free-agents/today")
+def get_today_free_agents() -> dict:
+    today_str = date.today().isoformat()
+    path = FREE_AGENTS_DIR / f"{today_str}_top_free_agents.csv"
+    if not path.exists():
+        raise HTTPException(status_code=404, detail=f"No free-agent file found for {today_str}")
+    return {
+        "file": path.name,
+        "rows": _load_csv(path),
+    }
 
 
 @app.get("/api/projections/by-date/{date_str}")

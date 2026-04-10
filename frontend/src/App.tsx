@@ -7,6 +7,7 @@ import type { ProjectionRow } from "./types";
 export default function App() {
   const [projections, setProjections] = useState<ProjectionRow[]>([]);
   const [freeAgents, setFreeAgents] = useState<ProjectionRow[]>([]);
+  const [predictionDate, setPredictionDate] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -19,6 +20,9 @@ export default function App() {
           fetchLatestProjections(),
           fetchLatestFreeAgents(),
         ]);
+
+        const dateFromFile = projectionRes.file.replace("_projections.csv", "");
+        setPredictionDate(dateFromFile);
 
         const sortedProjections = [...projectionRes.rows].sort(
           (a, b) => Number(b.Pred_FP) - Number(a.Pred_FP)
@@ -61,6 +65,9 @@ export default function App() {
   return (
     <div style={pageStyle}>
       <h1 style={{ marginBottom: "8px" }}>Fantasy Hoops Winning Formula</h1>
+      <p style={{ marginTop: 0, marginBottom: "8px", color: "#444", fontWeight: 600 }}>
+        Predictions for {predictionDate || "N/A"}
+      </p>
       <p style={{ marginTop: 0, color: "#666" }}>
         Latest projections and waiver-wire recommendations
       </p>
