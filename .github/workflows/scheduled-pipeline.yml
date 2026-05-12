@@ -6,6 +6,9 @@ on:
     - cron: "0 12 * * 1"   # weekly Monday at 12:00 UTC
   workflow_dispatch:
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   daily-inference:
     if: github.event.schedule == '0 11 * * *' || github.event_name == 'workflow_dispatch'
@@ -30,6 +33,19 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+
+      - name: Download or train models
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for RUN_ID in $(gh run list --workflow scheduled-pipeline.yml --status success --json databaseId --jq '.[].databaseId' | head -10); do
+            gh run download "$RUN_ID" --name trained-models --dir models/ 2>/dev/null && break
+          done
+          if [ ! -f models/nba_fp_model.pkl ]; then
+            echo "No cached models found — training from scratch"
+            python -m src.main build-dataset
+            python -m src.main train-models
+          fi
 
       - name: Build dataset
         run: python -m src.main build-dataset
