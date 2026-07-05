@@ -4,6 +4,8 @@ __pycache__/
 .venv/
 .ipynb_checkpoints/
 data/raw/*.parquet
+!data/raw/nba_fantasy_master_data.parquet
+!data/raw/nba_team_stats_master.parquet
 data/processed/*.parquet
 models/*.pkl
 outputs/projections/*.csv
