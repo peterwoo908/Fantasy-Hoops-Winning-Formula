@@ -2,7 +2,7 @@ name: Scheduled Pipeline
 
 on:
   schedule:
-    - cron: "0 11 * * *"   # daily at 11:00 UTC — inference
+    - cron: "0 18 * * *"   # daily at 18:00 UTC (2pm ET) — inference
     - cron: "0 12 * * 1"   # every Monday at 12:00 UTC — retrain
   workflow_dispatch:
     inputs:
@@ -19,8 +19,12 @@ jobs:
   # ── Daily inference ───────────────────────────────────────────────────────
   # Runs on the daily cron OR any manual workflow_dispatch trigger.
   # Does NOT run on the weekly retrain cron.
+  #
+  # nba_api is NOT called here — stats.nba.com blocks GitHub runner IPs.
+  # The local fetch script (scripts/fetch_and_push.sh, run via launchd at 9am)
+  # handles the nba_api pull and commits fresh parquets before this job fires.
   daily-inference:
-    if: github.event.schedule == '0 11 * * *' || github.event_name == 'workflow_dispatch'
+    if: github.event.schedule == '0 18 * * *' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
 
     env:
@@ -40,8 +44,10 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Build dataset (incremental top-up)
-        run: python -m src.main build-dataset
+      # Rebuilds the model-ready feature dataset from the committed raw parquets.
+      # --skip-fetch means zero nba_api calls — all data comes from the repo.
+      - name: Build features from committed parquets
+        run: python -m src.main build-dataset --skip-fetch
 
       # Try to pull models from the most recent successful weekly-retrain run.
       # Falls back to training from scratch on the first run or if artifacts expired.
@@ -102,8 +108,9 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Build dataset (incremental top-up)
-        run: python -m src.main build-dataset
+      # Same as daily-inference — reads from committed parquets, no nba_api calls.
+      - name: Build features from committed parquets
+        run: python -m src.main build-dataset --skip-fetch
 
       - name: Train models
         run: python -m src.main train-models

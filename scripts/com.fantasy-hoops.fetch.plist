@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.fantasy-hoops.fetch</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/petewoo/Downloads/fantasy-project/scripts/fetch_and_push.sh</string>
+    </array>
+
+    <!-- Fire at 9:00am local time. launchd will run it the next time the Mac
+         is awake if it was asleep at exactly 9am. Adjust Hour to taste. -->
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>9</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+
+    <!-- Logs land in outputs/logs/ which is already gitignored. -->
+    <key>StandardOutPath</key>
+    <string>/Users/petewoo/Downloads/fantasy-project/outputs/logs/fetch.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/petewoo/Downloads/fantasy-project/outputs/logs/fetch_error.log</string>
+
+    <!-- Do not run immediately when loaded — only on the schedule. -->
+    <key>RunAtLoad</key>
+    <false/>
+</dict>
+</plist>

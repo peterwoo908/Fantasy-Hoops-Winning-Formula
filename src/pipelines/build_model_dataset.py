@@ -8,10 +8,24 @@ from src.features.player_features import engineer_player_features
 from src.utils import ensure_directories
 
 
-def build_model_dataset() -> pd.DataFrame:
+def build_model_dataset(skip_fetch: bool = False) -> pd.DataFrame:
     ensure_directories()
-    player_data = update_current_season(data_path=PLAYER_DATA_PATH)
-    team_data = update_team_database(data_path=TEAM_DATA_PATH)
+
+    if skip_fetch:
+        # Used in CI/GitHub Actions where nba_api is blocked.
+        # Reads the committed raw parquets directly — no network calls.
+        if not PLAYER_DATA_PATH.exists() or not TEAM_DATA_PATH.exists():
+            raise FileNotFoundError(
+                "Raw parquets not found. Cannot use --skip-fetch without committed seed data."
+            )
+        player_data = pd.read_parquet(PLAYER_DATA_PATH)
+        player_data["GAME_DATE"] = pd.to_datetime(player_data["GAME_DATE"])
+        team_data = pd.read_parquet(TEAM_DATA_PATH)
+        team_data["GAME_DATE"] = pd.to_datetime(team_data["GAME_DATE"])
+        print(f"skip-fetch: loaded {len(player_data)} player rows and {len(team_data)} team rows from committed parquets.")
+    else:
+        player_data = update_current_season(data_path=PLAYER_DATA_PATH)
+        team_data = update_team_database(data_path=TEAM_DATA_PATH)
 
     player_features = engineer_player_features(player_data)
     merged = merge_data_for_modeling(player_features, team_data)
