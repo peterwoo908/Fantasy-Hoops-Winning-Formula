@@ -1,29 +1,29 @@
+# Python
 __pycache__/
 *.pyc
-.env
 .venv/
 .ipynb_checkpoints/
+
+# Local env — never commit credentials
+.env
+
+# Data — seed files are explicitly un-ignored below
 data/raw/*.parquet
 !data/raw/nba_fantasy_master_data.parquet
 !data/raw/nba_team_stats_master.parquet
 data/processed/*.parquet
+
+# Models
 models/*.pkl
-outputs/projections/*.csv
+
+# Outputs — projection and free-agent CSVs ARE committed (written by the pipeline)
+outputs/projections/*
+!outputs/projections/*.csv
+outputs/free_agents/*
+!outputs/free_agents/*.csv
 outputs/evaluations/*.csv
 outputs/logs/*
-frontend/node_modules/
-frontend/dist/
-# Outputs
-outputs/projections/*
-outputs/free_agents/*
-
-# Models (optional, but recommended)
-models/*.pkl
 
 # Frontend
 frontend/node_modules/
 frontend/dist/
-
-# Python
-.venv/
-__pycache__/

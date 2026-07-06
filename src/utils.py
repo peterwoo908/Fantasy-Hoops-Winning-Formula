@@ -6,7 +6,7 @@ from typing import Iterable
 
 import pandas as pd
 
-from src.config import EVALUATIONS_DIR, EXTERNAL_DATA_DIR, LOGS_DIR, MODELS_DIR, PROCESSED_DATA_DIR, PROJECTIONS_DIR, RAW_DATA_DIR
+from src.config import EVALUATIONS_DIR, EXTERNAL_DATA_DIR, FREE_AGENTS_DIR, LOGS_DIR, MODELS_DIR, PROCESSED_DATA_DIR, PROJECTIONS_DIR, RAW_DATA_DIR
 
 
 def normalize_name(name: str) -> str:
@@ -16,7 +16,7 @@ def normalize_name(name: str) -> str:
 
 
 def ensure_directories() -> None:
-    for path in [RAW_DATA_DIR, PROCESSED_DATA_DIR, EXTERNAL_DATA_DIR, MODELS_DIR, PROJECTIONS_DIR, EVALUATIONS_DIR, LOGS_DIR]:
+    for path in [RAW_DATA_DIR, PROCESSED_DATA_DIR, EXTERNAL_DATA_DIR, MODELS_DIR, PROJECTIONS_DIR, EVALUATIONS_DIR, LOGS_DIR, FREE_AGENTS_DIR]:
         Path(path).mkdir(parents=True, exist_ok=True)
 
 

@@ -2,95 +2,115 @@ name: Scheduled Pipeline
 
 on:
   schedule:
-    - cron: "0 11 * * *"   # daily at 11:00 UTC
-    - cron: "0 12 * * 1"   # weekly Monday at 12:00 UTC
+    - cron: "0 11 * * *"   # daily at 11:00 UTC — inference
+    - cron: "0 12 * * 1"   # every Monday at 12:00 UTC — retrain
   workflow_dispatch:
+    inputs:
+      date:
+        description: "Target date for inference (YYYY-MM-DD). Leave blank for today."
+        required: false
+        default: ""
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+# Allows the workflow to push committed outputs back to the repo.
+permissions:
+  contents: write
 
 jobs:
+  # ── Daily inference ───────────────────────────────────────────────────────
+  # Runs on the daily cron OR any manual workflow_dispatch trigger.
+  # Does NOT run on the weekly retrain cron.
   daily-inference:
     if: github.event.schedule == '0 11 * * *' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
 
     env:
       ESPN_LEAGUE_ID: ${{ secrets.ESPN_LEAGUE_ID }}
-      ESPN_YEAR: ${{ secrets.ESPN_YEAR }}
+      ESPN_YEAR: "2026"
       ESPN_SWID: ${{ secrets.ESPN_SWID }}
       ESPN_S2: ${{ secrets.ESPN_S2 }}
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+          cache: pip
 
       - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+        run: pip install -r requirements.txt
 
+      - name: Build dataset (incremental top-up)
+        run: python -m src.main build-dataset
+
+      # Try to pull models from the most recent successful weekly-retrain run.
+      # Falls back to training from scratch on the first run or if artifacts expired.
       - name: Download or train models
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          for RUN_ID in $(gh run list --workflow scheduled-pipeline.yml --status success --json databaseId --jq '.[].databaseId' | head -10); do
-            gh run download "$RUN_ID" --name trained-models --dir models/ 2>/dev/null && break
+          for RUN_ID in $(gh run list --workflow scheduled-pipeline.yml --status success \
+              --json databaseId --jq '.[].databaseId' | head -10); do
+            gh run download "$RUN_ID" --name trained-models --dir models/ 2>/dev/null \
+              && echo "Models downloaded from run $RUN_ID" && break
           done
           if [ ! -f models/nba_fp_model.pkl ]; then
             echo "No cached models found — training from scratch"
-            python -m src.main build-dataset
             python -m src.main train-models
           fi
 
-      - name: Build dataset
-        run: python -m src.main build-dataset
+      # Use the date input when manually triggered; fall back to today otherwise.
+      - name: Run daily inference
+        run: |
+          DATE="${{ github.event.inputs.date }}"
+          DATE="${DATE:-$(date +%F)}"
+          echo "Running inference for $DATE"
+          python -m src.main run-inference --date "$DATE"
 
-      - name: Run inference for today
-        run: python -m src.main run-inference --date $(date +%F)
+      # Commit projection and free-agent CSVs back to the repo.
+      # Exits cleanly (no failure) when there are no new files — e.g. offseason days.
+      - name: Commit projection outputs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add outputs/projections/ outputs/free_agents/ 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "No new outputs to commit (offseason or no games scheduled today)."
+          else
+            DATE="${{ github.event.inputs.date }}"
+            DATE="${DATE:-$(date +%F)}"
+            git commit -m "chore: daily projections for $DATE"
+            git push
+          fi
 
-      - name: Upload projections artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: daily-projections
-          path: outputs/projections/*.csv
-
+  # ── Weekly retrain ────────────────────────────────────────────────────────
+  # Runs ONLY on the Monday cron — never on workflow_dispatch or daily cron.
+  # Re-trains both models on the latest full dataset and uploads them as an
+  # artifact for the daily-inference job to download.
   weekly-retrain:
-    if: github.event.schedule == '0 12 * * 1' || github.event_name == 'workflow_dispatch'
+    if: github.event.schedule == '0 12 * * 1'
     runs-on: ubuntu-latest
 
-    env:
-      ESPN_LEAGUE_ID: ${{ secrets.ESPN_LEAGUE_ID }}
-      ESPN_YEAR: ${{ secrets.ESPN_YEAR }}
-      ESPN_SWID: ${{ secrets.ESPN_SWID }}
-      ESPN_S2: ${{ secrets.ESPN_S2 }}
-
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+          cache: pip
 
       - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+        run: pip install -r requirements.txt
 
-      - name: Build dataset
+      - name: Build dataset (incremental top-up)
         run: python -m src.main build-dataset
 
       - name: Train models
         run: python -m src.main train-models
 
-      - name: Upload model artifacts
+      - name: Upload trained models as artifact
         uses: actions/upload-artifact@v4
         with:
           name: trained-models
           path: models/*.pkl
+          retention-days: 90

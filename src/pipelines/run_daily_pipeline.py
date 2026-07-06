@@ -11,7 +11,7 @@ from src.utils import ensure_directories, get_nba_day_string
 
 def run_daily_pipeline(date_str: str | None = None) -> pd.DataFrame:
     ensure_directories()
-    date_str = date_str or get_nba_day_string(1)
+    date_str = date_str or get_nba_day_string(0)
 
     if not MODEL_READY_PATH.exists():
         raise FileNotFoundError(

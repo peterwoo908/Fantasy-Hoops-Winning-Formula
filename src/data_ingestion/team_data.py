@@ -3,9 +3,28 @@ from pathlib import Path
 
 import pandas as pd
 from nba_api.stats.endpoints import leaguegamelog
+from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_exponential
 
 from src.config import CURRENT_SEASON, TARGET_SEASONS, TEAM_DATA_PATH
 from src.features.team_features import apply_bayesian_smoothing, calculate_advanced_stats
+
+_NBA_RETRY = dict(
+    retry=retry_if_exception_type(Exception),
+    stop=stop_after_attempt(3),
+    wait=wait_exponential(multiplier=1, min=3, max=20),
+    reraise=True,
+)
+
+
+@retry(**_NBA_RETRY)
+def _fetch_team_log(season: str) -> pd.DataFrame:
+    log = leaguegamelog.LeagueGameLog(
+        season=season,
+        player_or_team_abbreviation="T",
+        season_type_all_star="Regular Season",
+        timeout=60,
+    )
+    return log.get_data_frames()[0]
 
 
 def fetch_team_history(seasons: list[str] | None = None) -> pd.DataFrame:
@@ -14,17 +33,9 @@ def fetch_team_history(seasons: list[str] | None = None) -> pd.DataFrame:
     print("Fetching team logs...")
 
     for season in seasons:
-        try:
-            log = leaguegamelog.LeagueGameLog(
-                season=season,
-                player_or_team_abbreviation="T",
-                season_type_all_star="Regular Season",
-            )
-            df = log.get_data_frames()[0]
-            df["Season_Year"] = season
-            all_teams.append(df)
-        except Exception as exc:
-            print(f"Error fetching team data for {season}: {exc}")
+        df = _fetch_team_log(season)
+        df["Season_Year"] = season
+        all_teams.append(df)
 
     if not all_teams:
         raise RuntimeError("No team data fetched.")
@@ -43,6 +54,18 @@ def initialize_team_database(data_path: Path = TEAM_DATA_PATH) -> pd.DataFrame:
     return df_final
 
 
+@retry(**_NBA_RETRY)
+def _fetch_team_delta(season: str, date_str: str) -> pd.DataFrame:
+    log = leaguegamelog.LeagueGameLog(
+        season=season,
+        player_or_team_abbreviation="T",
+        season_type_all_star="Regular Season",
+        date_from_nullable=date_str,
+        timeout=60,
+    )
+    return log.get_data_frames()[0]
+
+
 def update_team_database(data_path: Path = TEAM_DATA_PATH, current_season: str = CURRENT_SEASON) -> pd.DataFrame:
     if not data_path.exists():
         print("No existing team database found. Initializing first...")
@@ -57,18 +80,7 @@ def update_team_database(data_path: Path = TEAM_DATA_PATH, current_season: str =
     print(f"Team database current through: {last_date.date()}")
     print(f"Checking for new team games since {date_str}...")
 
-    try:
-        log = leaguegamelog.LeagueGameLog(
-            season=current_season,
-            player_or_team_abbreviation="T",
-            season_type_all_star="Regular Season",
-            date_from_nullable=date_str,
-            timeout=200,
-        )
-        new_df = log.get_data_frames()[0]
-    except Exception as exc:
-        print(f"Team update failed: {exc}")
-        return df_master
+    new_df = _fetch_team_delta(current_season, date_str)
 
     if new_df.empty:
         print("No new team games found.")

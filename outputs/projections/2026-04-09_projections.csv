@@ -1,0 +1,193 @@
+Date,PLAYER_NAME,Team,Opp,Fantasy_Team,Free_Agent,Injury_Status,Pred_MIN,Pred_FP,L3_FP_per_Min,Opp_DefRtg,Schedule_Rest,Long_Absence_Flag
+2026-04-09,Joel Embiid,PHI,HOU,Free Agent,True,ACTIVE,34.12,45.57,1.37,108.06,3,0
+2026-04-09,Josh Giddey,CHI,WAS,Sensei Kensei Konichiwa,False,DAY_TO_DAY,32.83,45.48,1.28,120.41,4,0
+2026-04-09,Jayson Tatum,BOS,NYK,Justin's Scary Team,False,ACTIVE,35.97,44.39,1.32,111.16,0,0
+2026-04-09,Kevin Durant,HOU,PHI,Woo Shiesty,False,ACTIVE,36.37,44.15,1.12,112.06,-1,0
+2026-04-09,Scottie Barnes,TOR,MIA,Garden State Warriors (pt. 2),False,ACTIVE,31.58,43.9,0.94,109.96,-3,0
+2026-04-09,LeBron James,LAL,GSW,Justin's Scary Team,False,ACTIVE,30.1,43.32,2.08,109.08,-3,0
+2026-04-09,Jaylen Brown,BOS,NYK,Shang Chi,False,ACTIVE,35.54,42.83,1.14,111.16,-1,0
+2026-04-09,Tyrese Maxey,PHI,HOU,Justin's Scary Team,False,ACTIVE,36.35,42.48,1.12,108.06,-3,0
+2026-04-09,Alperen Sengun,HOU,PHI,MVPG13 SHWIN,False,ACTIVE,31.96,42.41,0.84,112.06,-1,0
+2026-04-09,Tre Jones,CHI,WAS,MVPG13 SHWIN,False,ACTIVE,27.9,42.03,1.52,120.41,-3,0
+2026-04-09,Amen Thompson,HOU,PHI,Justin's Scary Team,False,ACTIVE,33.82,40.15,1.27,112.06,-1,0
+2026-04-09,Stephen Curry,GSW,LAL,Free Agent,True,ACTIVE,29.17,39.88,1.05,114.49,-3,0
+2026-04-09,Bam Adebayo,MIA,TOR,Garden State Warriors (pt. 2),False,ACTIVE,33.52,38.39,1.36,110.91,-3,0
+2026-04-09,Tyler Herro,MIA,TOR,Joe's Fatsos,False,DAY_TO_DAY,32.79,38.06,1.0,110.91,-3,0
+2026-04-09,Karl-Anthony Towns,NYK,BOS,Ibrahim's Impressive Team,False,ACTIVE,30.99,37.9,1.5,111.33,-1,0
+2026-04-09,Matas Buzelis,CHI,WAS,Kev's Crips,False,DAY_TO_DAY,30.73,36.95,0.89,120.41,-1,0
+2026-04-09,Paul George,PHI,HOU,Free Agent,True,ACTIVE,33.16,36.62,0.87,108.06,-3,0
+2026-04-09,Jalen Brunson,NYK,BOS,Free Agent,True,ACTIVE,34.97,36.39,1.26,111.33,-1,0
+2026-04-09,Brandon Ingram,TOR,MIA,Sensei Kensei Konichiwa,False,ACTIVE,32.57,36.14,1.18,109.96,-3,0
+2026-04-09,Jabari Smith Jr.,HOU,PHI,Kev's Crips,False,ACTIVE,35.5,35.83,0.68,112.06,-1,0
+2026-04-09,Lachlan Olbrich,CHI,WAS,Free Agent,True,ACTIVE,26.72,35.81,0.82,120.41,-3,0
+2026-04-09,Kristaps Porzingis,GSW,LAL,Justin's Scary Team,False,ACTIVE,27.05,35.45,0.88,114.49,-3,0
+2026-04-09,Collin Sexton,CHI,WAS,Free Agent,True,ACTIVE,28.75,35.23,1.08,120.41,-3,0
+2026-04-09,Leonard Miller,CHI,WAS,Free Agent,True,ACTIVE,31.08,35.23,1.16,120.41,-3,0
+2026-04-09,Julian Reese,WAS,CHI,Free Agent,True,ACTIVE,32.77,34.41,0.88,115.23,-3,0
+2026-04-09,Jamir Watkins,WAS,CHI,Free Agent,True,ACTIVE,28.74,34.24,0.64,115.23,-3,0
+2026-04-09,RJ Barrett,TOR,MIA,Joe's Fatsos,False,ACTIVE,32.76,33.34,0.98,109.96,-3,0
+2026-04-09,Mikal Bridges,NYK,BOS,Free Agent,True,ACTIVE,37.74,33.07,0.95,111.33,-3,0
+2026-04-09,Payton Pritchard,BOS,NYK,Kev's Crips,False,ACTIVE,31.73,32.8,1.0,111.16,-1,0
+2026-04-09,Will Riley,WAS,CHI,Shang Chi,False,ACTIVE,32.62,32.0,0.97,115.23,-3,0
+2026-04-09,VJ Edgecombe,PHI,HOU,Sensei Kensei Konichiwa,False,ACTIVE,33.57,31.73,1.13,108.06,-3,0
+2026-04-09,Patrick Williams,CHI,WAS,Free Agent,True,ACTIVE,28.93,31.49,0.82,120.41,-3,0
+2026-04-09,Quentin Grimes,PHI,HOU,Free Agent,True,ACTIVE,24.85,30.58,0.56,108.06,-3,0
+2026-04-09,Anthony Gill,WAS,CHI,Free Agent,True,ACTIVE,33.69,30.48,0.67,115.23,-3,0
+2026-04-09,Bub Carrington,WAS,CHI,Free Agent,True,ACTIVE,29.08,30.34,1.17,115.23,-3,0
+2026-04-09,Sharife Cooper,WAS,CHI,Free Agent,True,ACTIVE,23.48,29.69,1.58,115.23,-3,0
+2026-04-09,Mohamed Diawara,NYK,BOS,Free Agent,True,ACTIVE,19.87,29.41,0.78,111.33,-3,0
+2026-04-09,Ethan Thompson,IND,BKN,Free Agent,True,ACTIVE,30.5,29.13,0.82,115.41,-3,0
+2026-04-09,De'Anthony Melton,GSW,LAL,Free Agent,True,ACTIVE,24.35,29.1,1.08,114.49,-3,0
+2026-04-09,Ron Harper Jr.,BOS,NYK,Free Agent,True,ACTIVE,20.94,28.87,1.09,111.16,-3,0
+2026-04-09,Baylor Scheierman,BOS,NYK,Free Agent,True,ACTIVE,26.25,28.69,0.8,111.16,-3,0
+2026-04-09,Bilal Coulibaly,WAS,CHI,Free Agent,True,DAY_TO_DAY,26.74,28.65,1.23,115.23,-1,0
+2026-04-09,Josh Hart,NYK,BOS,Free Agent,True,ACTIVE,32.14,28.08,0.87,111.33,-1,0
+2026-04-09,Rob Dillingham,CHI,WAS,Free Agent,True,ACTIVE,26.77,28.06,0.64,120.41,-3,0
+2026-04-09,Kelly Oubre Jr.,PHI,HOU,Woo Shiesty,False,ACTIVE,29.56,27.85,1.2,108.06,-3,0
+2026-04-09,Pelle Larsson,MIA,TOR,Woo Shiesty,False,ACTIVE,30.06,27.79,0.56,110.91,-1,0
+2026-04-09,Justin Champagnie,WAS,CHI,Free Agent,True,DAY_TO_DAY,23.74,27.7,1.1,115.23,-3,0
+2026-04-09,OG Anunoby,NYK,BOS,Team 9,False,ACTIVE,34.18,27.5,0.94,111.33,-1,0
+2026-04-09,Brandin Podziemski,GSW,LAL,Team 9,False,ACTIVE,26.28,27.34,1.18,114.49,-3,0
+2026-04-09,Nic Claxton,BKN,IND,MVPG13 SHWIN,False,DAY_TO_DAY,22.67,27.27,0.81,113.46,4,0
+2026-04-09,Davion Mitchell,MIA,TOR,Free Agent,True,ACTIVE,30.33,27.21,0.95,110.91,-3,0
+2026-04-09,Reed Sheppard,HOU,PHI,Kev's Crips,False,ACTIVE,24.57,26.98,1.08,112.06,-3,0
+2026-04-09,Collin Murray-Boyles,TOR,MIA,Free Agent,True,ACTIVE,21.31,26.73,1.66,109.96,-3,0
+2026-04-09,Jaime Jaquez Jr.,MIA,TOR,MVPG13 SHWIN,False,ACTIVE,28.38,26.39,1.13,110.91,-3,0
+2026-04-09,Bronny James,LAL,GSW,Free Agent,True,ACTIVE,20.47,26.21,0.45,109.08,-3,0
+2026-04-09,Tre Johnson,WAS,CHI,Free Agent,True,DAY_TO_DAY,23.54,26.17,0.63,115.23,4,0
+2026-04-09,Tari Eason,HOU,PHI,MVPG13 SHWIN,False,ACTIVE,25.49,26.14,0.68,112.06,-3,0
+2026-04-09,Quenton Jackson,IND,BKN,Free Agent,True,ACTIVE,25.5,26.13,1.03,115.41,-3,0
+2026-04-09,Jalen Slawson,IND,BKN,Free Agent,True,ACTIVE,23.38,26.04,0.76,115.41,-3,0
+2026-04-09,Mitchell Robinson,NYK,BOS,Free Agent,True,ACTIVE,20.99,26.0,1.84,111.33,0,0
+2026-04-09,Draymond Green,GSW,LAL,Free Agent,True,ACTIVE,23.12,25.95,1.04,114.49,-1,0
+2026-04-09,Jay Huff,IND,BKN,Sensei Kensei Konichiwa,False,ACTIVE,23.11,25.7,1.47,115.41,-3,0
+2026-04-09,Gui Santos,GSW,LAL,Shang Chi,False,ACTIVE,26.96,25.62,1.08,114.49,-3,0
+2026-04-09,Chaney Johnson,BKN,IND,Free Agent,True,ACTIVE,20.34,25.55,1.27,113.46,-3,0
+2026-04-09,JD Davison,HOU,PHI,Free Agent,True,ACTIVE,14.38,25.53,0.84,112.06,-3,0
+2026-04-09,Jakob Poeltl,TOR,MIA,Kev's Crips,False,ACTIVE,22.59,25.5,0.84,109.96,-3,0
+2026-04-09,Luka Garza,BOS,NYK,Free Agent,True,ACTIVE,20.65,25.13,1.55,111.16,-3,0
+2026-04-09,Clint Capela,HOU,PHI,Free Agent,True,ACTIVE,16.0,25.12,0.81,112.06,-3,0
+2026-04-09,E.J. Liddell,BKN,IND,Free Agent,True,ACTIVE,26.86,25.12,1.0,113.46,-3,0
+2026-04-09,Gary Payton II,GSW,LAL,Free Agent,True,ACTIVE,20.16,24.76,1.37,114.49,-3,0
+2026-04-09,Andrew Wiggins,MIA,TOR,Garden State Warriors (pt. 2),False,ACTIVE,27.48,24.19,0.86,110.91,-3,0
+2026-04-09,Tyson Etienne,BKN,IND,Free Agent,True,ACTIVE,29.41,24.16,0.81,113.46,-3,0
+2026-04-09,Derrick White,BOS,NYK,Woo Shiesty,False,ACTIVE,31.05,23.94,0.55,111.16,-1,0
+2026-04-09,Kobe Bufkin,LAL,GSW,Free Agent,True,ACTIVE,12.82,23.81,0.09,109.08,2,0
+2026-04-09,Obi Toppin,IND,BKN,Free Agent,True,ACTIVE,19.52,23.78,1.26,115.41,-3,0
+2026-04-09,Kobe Brown,IND,BKN,Free Agent,True,ACTIVE,27.37,23.56,0.66,115.41,-3,0
+2026-04-09,Sam Hauser,BOS,NYK,Free Agent,True,ACTIVE,27.04,23.45,0.57,111.16,-1,0
+2026-04-09,Leaky Black,WAS,CHI,Free Agent,True,ACTIVE,28.83,23.34,0.56,115.23,-3,0
+2026-04-09,Jose Alvarado,NYK,BOS,Free Agent,True,ACTIVE,20.96,23.29,1.17,111.33,-3,0
+2026-04-09,Ben Saraf,BKN,IND,Free Agent,True,DAY_TO_DAY,30.56,22.85,0.83,113.46,-3,0
+2026-04-09,Sandro Mamukelashvili,TOR,MIA,Kev's Crips,False,ACTIVE,22.52,22.81,1.07,109.96,-3,0
+2026-04-09,Deandre Ayton,LAL,GSW,Team 9,False,ACTIVE,22.76,22.33,0.86,109.08,-3,0
+2026-04-09,Micah Potter,IND,BKN,Free Agent,True,ACTIVE,23.33,22.28,1.22,115.41,-3,0
+2026-04-09,Guerschon Yabusele,CHI,WAS,Free Agent,True,ACTIVE,25.13,22.11,0.57,120.41,0,0
+2026-04-09,Kel'el Ware,MIA,TOR,Ibrahim's Impressive Team,False,ACTIVE,20.2,21.75,1.48,110.91,-3,0
+2026-04-09,Andre Drummond,PHI,HOU,Free Agent,True,ACTIVE,22.71,21.56,1.03,108.06,-3,0
+2026-04-09,Jalen Wilson,BKN,IND,Free Agent,True,ACTIVE,27.11,21.47,0.81,113.46,-3,0
+2026-04-09,Ja'Kobe Walter,TOR,MIA,Free Agent,True,ACTIVE,26.2,21.3,0.85,109.96,-3,0
+2026-04-09,Jordan Walsh,BOS,NYK,Free Agent,True,ACTIVE,21.93,21.26,0.91,111.16,-3,0
+2026-04-09,Josh Minott,BKN,IND,Free Agent,True,ACTIVE,20.73,20.39,0.95,113.46,4,0
+2026-04-09,Jaxson Hayes,LAL,GSW,Free Agent,True,ACTIVE,20.09,20.18,1.01,109.08,4,0
+2026-04-09,Pat Spencer,GSW,LAL,Free Agent,True,ACTIVE,18.62,19.82,0.76,114.49,-3,0
+2026-04-09,Ziaire Williams,BKN,IND,Free Agent,True,DAY_TO_DAY,22.59,19.68,0.95,113.46,4,0
+2026-04-09,Omer Yurtseven,GSW,LAL,Free Agent,True,ACTIVE,10.91,19.55,0.1,114.49,4,0
+2026-04-09,Kam Jones,IND,BKN,Free Agent,True,ACTIVE,21.83,19.51,0.45,115.41,-3,0
+2026-04-09,Nikola Vucevic,BOS,NYK,Joe's Fatsos,False,ACTIVE,21.27,19.5,0.66,111.16,-1,0
+2026-04-09,Simone Fontecchio,MIA,TOR,Free Agent,True,ACTIVE,17.97,19.47,1.16,110.91,-1,0
+2026-04-09,Dalton Knecht,LAL,GSW,Free Agent,True,ACTIVE,14.11,19.37,0.92,109.08,-3,0
+2026-04-09,Rui Hachimura,LAL,GSW,Free Agent,True,ACTIVE,24.0,19.28,0.7,109.08,-3,0
+2026-04-09,Terance Mann,BKN,IND,Free Agent,True,DAY_TO_DAY,22.22,19.14,0.85,113.46,4,0
+2026-04-09,Charles Bassey,GSW,LAL,Free Agent,True,ACTIVE,15.35,19.05,1.12,114.49,-3,0
+2026-04-09,Will Richard,GSW,LAL,Free Agent,True,ACTIVE,16.95,18.99,0.57,114.49,-3,0
+2026-04-09,Dominick Barlow,PHI,HOU,Free Agent,True,ACTIVE,19.68,18.95,0.94,108.06,-3,0
+2026-04-09,Jae'Sean Tate,HOU,PHI,Free Agent,True,ACTIVE,14.9,18.76,0.94,112.06,-3,0
+2026-04-09,Luke Kennard,LAL,GSW,Free Agent,True,ACTIVE,21.79,18.63,1.38,109.08,-3,0
+2026-04-09,Jamal Shead,TOR,MIA,Free Agent,True,ACTIVE,24.58,18.6,0.43,109.96,-3,0
+2026-04-09,Mac McClung,CHI,WAS,Free Agent,True,ACTIVE,16.67,18.57,0.76,120.41,-3,0
+2026-04-09,Justin Edwards,PHI,HOU,Free Agent,True,ACTIVE,17.61,18.52,0.23,108.06,-3,0
+2026-04-09,Drake Powell,BKN,IND,Free Agent,True,ACTIVE,27.18,18.44,0.48,113.46,-3,0
+2026-04-09,Dalano Banton,BOS,NYK,Free Agent,True,ACTIVE,14.41,18.39,0.61,111.16,-3,0
+2026-04-09,Josh Okogie,HOU,PHI,Free Agent,True,ACTIVE,20.43,18.03,0.68,112.06,-3,0
+2026-04-09,Jarred Vanderbilt,LAL,GSW,Free Agent,True,ACTIVE,17.93,17.9,1.1,109.08,-3,0
+2026-04-09,Jake LaRavia,LAL,GSW,Free Agent,True,ACTIVE,22.49,17.66,0.56,109.08,-3,0
+2026-04-09,Miles McBride,NYK,BOS,Free Agent,True,ACTIVE,20.86,17.63,0.75,111.33,-3,0
+2026-04-09,Landry Shamet,NYK,BOS,Free Agent,True,ACTIVE,21.84,17.48,0.32,111.33,-1,0
+2026-04-09,Dorian Finney-Smith,HOU,PHI,Free Agent,True,ACTIVE,16.18,17.45,0.88,112.06,-3,0
+2026-04-09,Yuki Kawamura,CHI,WAS,Free Agent,True,ACTIVE,16.5,17.36,0.39,120.41,-3,0
+2026-04-09,Noah Clowney,BKN,IND,Free Agent,True,DAY_TO_DAY,20.42,17.32,0.79,113.46,4,0
+2026-04-09,Jaden Hardy,WAS,CHI,Free Agent,True,ACTIVE,20.0,17.11,0.81,115.23,-3,0
+2026-04-09,Neemias Queta,BOS,NYK,MVPG13 SHWIN,False,ACTIVE,21.75,17.09,1.42,111.16,-1,0
+2026-04-09,Chris Manon,LAL,GSW,Free Agent,True,ACTIVE,12.65,17.01,1.06,109.08,-3,0
+2026-04-09,Aaron Holiday,HOU,PHI,Free Agent,True,ACTIVE,16.17,16.85,0.78,112.06,-3,0
+2026-04-09,Trey Jemison III,NYK,BOS,Free Agent,True,ACTIVE,11.55,16.61,-0.07,111.33,-3,0
+2026-04-09,Keshad Johnson,MIA,TOR,Free Agent,True,ACTIVE,17.98,16.32,0.84,110.91,-3,0
+2026-04-09,Kasparas Jakucionis,MIA,TOR,Free Agent,True,ACTIVE,20.65,16.29,0.97,110.91,-3,0
+2026-04-09,Adem Bona,PHI,HOU,Free Agent,True,ACTIVE,18.23,16.02,0.53,108.06,-3,0
+2026-04-09,Nick Smith Jr.,LAL,GSW,Free Agent,True,ACTIVE,14.9,15.79,0.52,109.08,-3,0
+2026-04-09,Max Shulga,BOS,NYK,Free Agent,True,ACTIVE,11.57,15.76,0.05,111.16,-3,0
+2026-04-09,John Tonje,BOS,NYK,Free Agent,True,ACTIVE,13.39,15.31,1.08,111.16,-3,0
+2026-04-09,Nolan Traore,BKN,IND,Sensei Kensei Konichiwa,False,ACTIVE,20.41,14.77,1.3,113.46,-1,0
+2026-04-09,Adou Thiero,LAL,GSW,Free Agent,True,ACTIVE,12.36,14.42,0.84,109.08,-3,0
+2026-04-09,Maxi Kleber,LAL,GSW,Free Agent,True,ACTIVE,14.17,14.01,0.45,109.08,-3,0
+2026-04-09,Hugo Gonzalez,BOS,NYK,Free Agent,True,ACTIVE,12.18,13.99,0.47,111.16,-1,0
+2026-04-09,Isaac Okoro,CHI,WAS,Free Agent,True,ACTIVE,26.6,13.71,0.85,120.41,2,0
+2026-04-09,Tyrese Martin,PHI,HOU,Free Agent,True,ACTIVE,11.39,13.59,0.76,108.06,-3,0
+2026-04-09,Jeff Green,HOU,PHI,Free Agent,True,ACTIVE,12.49,13.52,0.01,112.06,-3,0
+2026-04-09,Jordan Clarkson,NYK,BOS,Free Agent,True,ACTIVE,16.83,13.44,0.9,111.33,-3,0
+2026-04-09,Gradey Dick,TOR,MIA,Free Agent,True,ACTIVE,12.45,12.91,1.4,109.96,-3,0
+2026-04-09,Taelon Peter,IND,BKN,Free Agent,True,ACTIVE,19.79,12.62,0.67,115.41,-3,0
+2026-04-09,Ariel Hukporti,NYK,BOS,Free Agent,True,ACTIVE,15.12,12.48,1.36,111.33,-3,0
+2026-04-09,Nikola Jovic,MIA,TOR,Free Agent,True,ACTIVE,10.27,12.0,0.24,110.91,4,0
+2026-04-09,Seth Curry,GSW,LAL,Free Agent,True,ACTIVE,14.79,11.77,0.52,114.49,-3,0
+2026-04-09,A.J. Lawson,TOR,MIA,Free Agent,True,ACTIVE,13.95,11.33,0.61,109.96,-3,0
+2026-04-09,Nate Williams,GSW,LAL,Free Agent,True,ACTIVE,17.36,11.15,0.5,114.49,-3,0
+2026-04-09,Markelle Fultz,TOR,MIA,Free Agent,True,ACTIVE,9.57,10.73,0.33,109.96,4,0
+2026-04-09,Drew Timme,LAL,GSW,Free Agent,True,ACTIVE,13.66,10.62,0.47,109.08,-3,0
+2026-04-09,Dalen Terry,PHI,HOU,Free Agent,True,ACTIVE,12.98,10.25,1.34,108.06,-3,0
+2026-04-09,Trendon Watford,PHI,HOU,Free Agent,True,ACTIVE,12.65,10.07,1.11,108.06,-3,0
+2026-04-09,Dru Smith,MIA,TOR,Free Agent,True,ACTIVE,8.44,9.81,0.71,110.91,4,0
+2026-04-09,Isaiah Crawford,HOU,PHI,Free Agent,True,ACTIVE,9.26,9.8,-0.15,112.06,-3,0
+2026-04-09,Tristan Vukcevic,WAS,CHI,Free Agent,True,DAY_TO_DAY,14.0,9.63,1.46,115.23,4,0
+2026-04-09,Pacome Dadiet,NYK,BOS,Free Agent,True,ACTIVE,10.05,9.58,0.41,111.33,-3,0
+2026-04-09,Jonathan Mogbo,TOR,MIA,Free Agent,True,ACTIVE,11.12,9.56,0.57,109.96,-3,0
+2026-04-09,Kevin McCullar Jr.,NYK,BOS,Free Agent,True,ACTIVE,10.43,9.25,1.34,111.33,-3,0
+2026-04-09,Ochai Agbaji,BKN,IND,Free Agent,True,ACTIVE,13.76,9.11,0.48,113.46,4,0
+2026-04-09,Kyle Lowry,PHI,HOU,Free Agent,True,ACTIVE,12.27,8.43,0.23,108.06,-3,0
+2026-04-09,Amari Williams,BOS,NYK,Free Agent,True,ACTIVE,10.14,7.91,1.29,111.16,-3,0
+2026-04-09,Jeremy Sochan,NYK,BOS,Free Agent,True,ACTIVE,12.02,7.39,1.24,111.33,-3,0
+2026-04-09,Jamison Battle,TOR,MIA,Free Agent,True,ACTIVE,8.36,7.26,0.87,109.96,-3,0
+2026-04-09,MarJon Beauchamp,PHI,HOU,Free Agent,True,ACTIVE,10.27,7.2,0.62,108.06,-3,0
+2026-04-09,Jabari Walker,PHI,HOU,Free Agent,True,ACTIVE,9.44,6.2,0.9,108.06,-3,0
+2026-04-09,Trevor Keels,MIA,TOR,Free Agent,True,ACTIVE,7.83,6.16,1.03,110.91,-3,0
+2026-04-09,Vladislav Goldin,MIA,TOR,Free Agent,True,ACTIVE,6.53,5.83,0.53,110.91,-3,0
+2026-04-09,Myron Gardner,MIA,TOR,Free Agent,True,ACTIVE,7.62,5.34,0.48,110.91,-3,0
+2026-04-09,Tristen Newton,HOU,PHI,Free Agent,True,ACTIVE,7.0,5.31,0.24,112.06,-3,0
+2026-04-09,Alijah Martin,TOR,MIA,Free Agent,True,ACTIVE,7.05,5.3,0.1,109.96,-1,0
+2026-04-09,Tyler Kolek,NYK,BOS,Free Agent,True,ACTIVE,8.32,5.25,1.41,111.33,4,0
+2026-04-09,Dillon Jones,NYK,BOS,Free Agent,True,ACTIVE,8.71,5.23,0.62,111.33,-3,0
+2026-04-09,Jahmir Young,MIA,TOR,Free Agent,True,ACTIVE,6.16,3.12,0.93,110.91,-3,0
+2026-04-09,Trayce Jackson-Davis,TOR,MIA,Free Agent,True,ACTIVE,5.32,2.59,0.49,109.96,-3,0
+2026-04-09,Garrett Temple,TOR,MIA,Free Agent,True,ACTIVE,3.73,1.93,0.2,109.96,-3,0
+2026-04-09,Moses Moody,GSW,LAL,Free Agent,True,OUT,0.0,0.0,0.79,114.49,4,1
+2026-04-09,T.J. McConnell,IND,BKN,Free Agent,True,OUT,0.0,0.0,1.61,115.41,4,0
+2026-04-09,Ben Sheppard,IND,BKN,Free Agent,True,OUT,0.0,0.0,1.12,115.41,4,0
+2026-04-09,Jarace Walker,IND,BKN,Free Agent,True,OUT,0.0,0.0,1.17,115.41,-1,0
+2026-04-09,Immanuel Quickley,TOR,MIA,Sensei Kensei Konichiwa,False,OUT,0.0,0.0,1.16,109.96,-3,0
+2026-04-09,Aaron Nesmith,IND,BKN,Free Agent,True,OUT,0.0,0.0,0.64,115.41,4,0
+2026-04-09,Andrew Nembhard,IND,BKN,Woo Shiesty,False,OUT,0.0,0.0,1.24,115.41,4,0
+2026-04-09,Ivica Zubac,IND,BKN,Joe's Fatsos,False,OUT,0.0,0.0,1.03,115.41,4,1
+2026-04-09,Pascal Siakam,IND,BKN,Sensei Kensei Konichiwa,False,OUT,0.0,0.0,1.51,115.41,4,0
+2026-04-09,Austin Reaves,LAL,GSW,Ibrahim's Impressive Team,False,OUT,0.0,0.0,1.0,109.08,4,0
+2026-04-09,Cameron Payne,PHI,HOU,Free Agent,True,OUT,0.0,0.0,1.0,108.06,4,0
+2026-04-09,Quinten Post,GSW,LAL,Free Agent,True,OUT,0.0,0.0,1.04,114.49,4,0
+2026-04-09,Luka Doncic,LAL,GSW,Ibrahim's Impressive Team,False,OUT,0.0,0.0,2.08,109.08,4,0
+2026-04-09,Danny Wolf,BKN,IND,Free Agent,True,OUT,0.0,0.0,0.71,113.46,4,1
+2026-04-09,Jalen Smith,CHI,WAS,Free Agent,True,OUT,0.0,0.0,1.08,120.41,4,1
+2026-04-09,Al Horford,GSW,LAL,Free Agent,True,OUT,0.0,0.0,1.05,114.49,-3,0
+2026-04-09,Norman Powell,MIA,TOR,Free Agent,True,OUT,0.0,0.0,0.47,110.91,-3,0
+2026-04-09,Marcus Smart,LAL,GSW,Free Agent,True,OUT,0.0,0.0,0.94,109.08,-3,0
+2026-04-09,Alex Sarr,WAS,CHI,Shang Chi,False,OUT,0.0,0.0,1.17,115.23,4,0
+2026-04-09,Trae Young,WAS,CHI,Team 9,False,OUT,0.0,0.0,1.21,115.23,4,1
+2026-04-09,Nick Richards,CHI,WAS,Free Agent,True,OUT,0.0,0.0,0.76,120.41,4,1

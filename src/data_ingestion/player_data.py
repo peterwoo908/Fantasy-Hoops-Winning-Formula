@@ -4,9 +4,17 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 from nba_api.stats.endpoints import leaguegamelog
+from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_exponential
 
 from src.config import CURRENT_SEASON, PLAYER_DATA_PATH, SCORING_RULES, TARGET_SEASONS
 from src.utils import normalize_name, require_columns
+
+_NBA_RETRY = dict(
+    retry=retry_if_exception_type(Exception),
+    stop=stop_after_attempt(3),
+    wait=wait_exponential(multiplier=1, min=3, max=20),
+    reraise=True,
+)
 
 
 def process_league_log(df: pd.DataFrame) -> pd.DataFrame:
@@ -40,20 +48,22 @@ def process_league_log(df: pd.DataFrame) -> pd.DataFrame:
     return df[[c for c in desired_cols if c in df.columns]].copy()
 
 
+@retry(**_NBA_RETRY)
+def _fetch_league_game_log(season_str: str) -> pd.DataFrame:
+    log = leaguegamelog.LeagueGameLog(
+        season=season_str,
+        player_or_team_abbreviation="P",
+        season_type_all_star="Regular Season",
+        timeout=60,
+    )
+    return log.get_data_frames()[0]
+
+
 def fetch_season_whole(season_str: str) -> pd.DataFrame:
     print(f"Fetching full player log for season: {season_str}...")
-    try:
-        log = leaguegamelog.LeagueGameLog(
-            season=season_str,
-            player_or_team_abbreviation="P",
-            season_type_all_star="Regular Season",
-        )
-        df = log.get_data_frames()[0]
-        df["Season_Year"] = season_str
-        return process_league_log(df)
-    except Exception as exc:
-        print(f"Error fetching player data for {season_str}: {exc}")
-        return pd.DataFrame()
+    df = _fetch_league_game_log(season_str)
+    df["Season_Year"] = season_str
+    return process_league_log(df)
 
 
 def build_historical_database(data_path: Path = PLAYER_DATA_PATH) -> pd.DataFrame:
@@ -63,7 +73,7 @@ def build_historical_database(data_path: Path = PLAYER_DATA_PATH) -> pd.DataFram
         if not df.empty:
             all_dfs.append(df)
             print(f"Loaded {len(df)} player rows for {season}")
-        time.sleep(1.0)
+        time.sleep(2.0)
 
     if not all_dfs:
         raise RuntimeError("No player data fetched.")
@@ -73,6 +83,18 @@ def build_historical_database(data_path: Path = PLAYER_DATA_PATH) -> pd.DataFram
     master_df.to_parquet(data_path, index=False)
     print(f"Saved {len(master_df)} player rows to {data_path}")
     return master_df
+
+
+@retry(**_NBA_RETRY)
+def _fetch_player_delta(season_str: str, date_str: str) -> pd.DataFrame:
+    log = leaguegamelog.LeagueGameLog(
+        season=season_str,
+        player_or_team_abbreviation="P",
+        season_type_all_star="Regular Season",
+        date_from_nullable=date_str,
+        timeout=60,
+    )
+    return log.get_data_frames()[0]
 
 
 def update_current_season(data_path: Path = PLAYER_DATA_PATH, current_season: str = CURRENT_SEASON) -> pd.DataFrame:
@@ -89,18 +111,7 @@ def update_current_season(data_path: Path = PLAYER_DATA_PATH, current_season: st
     print(f"Player database current through: {max_date.date()}")
     print(f"Fetching player updates since {date_str}...")
 
-    try:
-        log = leaguegamelog.LeagueGameLog(
-            season=current_season,
-            player_or_team_abbreviation="P",
-            season_type_all_star="Regular Season",
-            date_from_nullable=date_str,
-            timeout=60,
-        )
-        new_df = log.get_data_frames()[0]
-    except Exception as exc:
-        print(f"Player update failed: {exc}")
-        return master_df
+    new_df = _fetch_player_delta(current_season, date_str)
 
     if new_df.empty:
         print("No new player games found.")
